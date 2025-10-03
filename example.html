@@ -54,8 +54,9 @@
             // Default intensity is 1. Let's dim the light a small amount
             light.intensity = 0.7;
             
-            // Load meshes
-            BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "scene.babylon");
+            // Load meshes from a path that works no matter where this page is hosted
+            const modelsRootUrl = new URL("./models/", window.location.href).href;
+            BABYLON.SceneLoader.ImportMeshAsync("", modelsRootUrl, "scene.babylon", scene);
             
             return scene;
         };
